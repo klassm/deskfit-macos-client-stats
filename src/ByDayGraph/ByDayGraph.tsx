@@ -1,14 +1,12 @@
-import { DateTime } from "luxon";
 import { FC } from "react";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Entry } from "../fetchData";
 
 export interface Props {
   data: Entry[]
-  month: DateTime
 }
 
-export const EntryGraph: FC<Props> = ({ data}) => {
+export const ByDayGraph: FC<Props> = ({ data}) => {
 
   const formatted = data
     .map((entry) => ( { ...entry, date: entry.date.toFormat("yyyy-MM-dd") } ));
@@ -20,7 +18,7 @@ export const EntryGraph: FC<Props> = ({ data}) => {
         margin={ {
           top: 15,
           right: 5,
-          left: 10,
+          left: 30,
           bottom: 5,
         } }
       >
