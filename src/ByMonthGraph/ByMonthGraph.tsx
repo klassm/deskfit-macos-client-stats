@@ -20,6 +20,7 @@ export const ByMonthGraph: FC<Props> = ({ data }) => {
   const viewableEntries: ViewableEntry[] = useMemo(() => {
     const minDate = DateTime.now().minus({ month: 13 });
     const relevantData = data.filter(entry => entry.date.toMillis() > minDate.toMillis())
+      .filter(entry => entry.steps > 0)
       .map(entry => ( { ...entry, month: entry.date.toFormat("yyyy-MM") } ));
     const groups = groupBy(relevantData, data => data.month);
     const mappedGroups = mapValues(groups, group => {
@@ -29,6 +30,7 @@ export const ByMonthGraph: FC<Props> = ({ data }) => {
         totalSteps: total.steps,
         averageSteps: group.length > 0 ? Math.round(total.steps / group.length) : 0,
         topSteps: maxEntry?.steps ?? 0,
+        walkingDays: group.length
       } );
     })
     const allEntries = Object.entries(mappedGroups).map(([month, result]) => ( { ...result, month } ))
@@ -54,6 +56,7 @@ export const ByMonthGraph: FC<Props> = ({ data }) => {
         <Line name="Total Steps" type="monotone" dataKey="totalSteps" stroke="#2a801d"/>
         <Line name="Average Steps" type="monotone" dataKey="averageSteps" stroke="#8884d8"/>
         <Line name="Maximum Steps" type="monotone" dataKey="topSteps" stroke="#eb673b"/>
+        <Line name="Walking Days" type="monotone" dataKey="topSteps" stroke="#00707d"/>
       </LineChart>
     </ResponsiveContainer>
   )
