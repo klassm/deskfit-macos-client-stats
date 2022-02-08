@@ -56,7 +56,7 @@ export const ByMonthGraph: FC<Props> = ({ data }) => {
         <Line name="Total Steps" type="monotone" dataKey="totalSteps" stroke="#2a801d"/>
         <Line name="Average Steps" type="monotone" dataKey="averageSteps" stroke="#8884d8"/>
         <Line name="Maximum Steps" type="monotone" dataKey="topSteps" stroke="#eb673b"/>
-        <Line name="Walking Days" type="monotone" dataKey="topSteps" stroke="#00707d"/>
+        <Line name="Walking Days" type="monotone" dataKey="walkingDays" stroke="#00707d"/>
       </LineChart>
     </ResponsiveContainer>
   )
