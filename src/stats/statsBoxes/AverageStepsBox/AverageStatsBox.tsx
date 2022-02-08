@@ -15,14 +15,14 @@ export const AverageStatsBox: FC<Props> = ({ title, data }) => {
     const totalMeters = sumBy(data, value => value.meters);
 
     return {
-      averageSteps: Math.round(totalSteps / data.length),
-      averageMeters: Math.round(totalMeters / data.length),
-      walkingDays: walkingDays
+      averageSteps: Math.round(totalSteps / walkingDays),
+      averageMeters: Math.round(totalMeters / walkingDays),
+      walkingDays
     };
   }, [data]);
   return <StatsBox title={title} entries={[
-    `${walkingDays} walking days`,
-    `${averageSteps} steps`,
-    `${averageMeters} meters`,
+    `Out of ${walkingDays} walking days ...`,
+    `${averageSteps} steps / walking day`,
+    `${averageMeters} meters / walking day`,
   ]}/>;
 }
