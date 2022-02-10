@@ -28,7 +28,6 @@ export const ByDayGraph: FC<Props> = ({ data}) => {
         <Legend/>
         <Tooltip formatter={ (value: number) => `${ Math.ceil(value) }` }/>
         <Line name="Steps" type="monotone" dataKey="steps" stroke="#2a801d"/>
-        <Line name="Meters" type="monotone" dataKey="meters" stroke="#8884d8"/>
       </LineChart>
     </ResponsiveContainer>
   )

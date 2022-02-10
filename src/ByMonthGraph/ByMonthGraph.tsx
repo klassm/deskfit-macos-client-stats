@@ -50,13 +50,14 @@ export const ByMonthGraph: FC<Props> = ({ data }) => {
       >
         <CartesianGrid strokeDasharray="3 3"/>
         <XAxis tick={ { fontSize: 12 } } dataKey="month"/>
-        <YAxis tick={ { fontSize: 10 } } width={ 18 } />
+        <YAxis yAxisId="left" tick={ { fontSize: 10 } } width={ 18 } />
+        <YAxis yAxisId="right" orientation="right" tick={ { fontSize: 10 } } width={ 18 }  />
         <Legend/>
         <Tooltip formatter={ (value: number) => `${ Math.round(value) }` }/>
-        <Line name="Total Steps" type="monotone" dataKey="totalSteps" stroke="#2a801d"/>
-        <Line name="Average Steps" type="monotone" dataKey="averageSteps" stroke="#8884d8"/>
-        <Line name="Maximum Steps" type="monotone" dataKey="topSteps" stroke="#eb673b"/>
-        <Line name="Walking Days" type="monotone" dataKey="walkingDays" stroke="#00707d"/>
+        <Line yAxisId="left" name="Total Steps" type="monotone" dataKey="totalSteps" stroke="#2a801d"/>
+        <Line yAxisId="left" name="Average Steps" type="monotone" dataKey="averageSteps" stroke="#8884d8"/>
+        <Line yAxisId="left" name="Maximum Steps" type="monotone" dataKey="topSteps" stroke="#eb673b"/>
+        <Line yAxisId="right" name="Walking Days" type="monotone" dataKey="walkingDays" stroke="#00707d"/>
       </LineChart>
     </ResponsiveContainer>
   )
